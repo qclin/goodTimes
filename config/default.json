@@ -4,3 +4,27 @@
     "validationToken": "lemon",
     "serverURL": "https://whispering-retreat-78831.herokuapp.com/"
 }
+
+/*
+curl -X POST -H "Content-Type: application/json" -d '{
+  "setting_type":"greeting",
+  "greeting":{
+    "text":"Halo, this is the greeting message from Goodpatch Berlin"
+  }
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAADo3s0bNisBACo4DQUQaB9IuAd8ZCdIOUBMBNYisCPKpuhj1fVflcZB7UZA5ZCLKwZCgkTi4k8UZCeSwybBGCiTuF8gW0MUywrn2QYeMZAB4wt8EIUhZCJtdA5ZBgFbOxXnoi9rkE3yNzdPQvMgjlG1T6ZCVpNtcPGnPM5cZCOUYZB44gZDZD"
+
+
+curl -X DELETE -H "Content-Type: application/json" -d '{
+  "setting_type":"greeting"
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAADo3s0bNisBACo4DQUQaB9IuAd8ZCdIOUBMBNYisCPKpuhj1fVflcZB7UZA5ZCLKwZCgkTi4k8UZCeSwybBGCiTuF8gW0MUywrn2QYeMZAB4wt8EIUhZCJtdA5ZBgFbOxXnoi9rkE3yNzdPQvMgjlG1T6ZCVpNtcPGnPM5cZCOUYZB44gZDZD"
+
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "setting_type":"call_to_actions",
+  "thread_state":"new_thread",
+  "call_to_actions":[
+    {
+      "payload":"USER_DEFINED_PAYLOAD"
+    }
+  ]
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAADo3s0bNisBACo4DQUQaB9IuAd8ZCdIOUBMBNYisCPKpuhj1fVflcZB7UZA5ZCLKwZCgkTi4k8UZCeSwybBGCiTuF8gW0MUywrn2QYeMZAB4wt8EIUhZCJtdA5ZBgFbOxXnoi9rkE3yNzdPQvMgjlG1T6ZCVpNtcPGnPM5cZCOUYZB44gZDZD"*/
