@@ -1,6 +1,6 @@
 {
-    "appSecret": "",
-    "pageAccessToken": "",
-    "validationToken": "",
-    "serverURL": ""
+    "appSecret": "c2b9655e089a46b2fff3479a3cf22333",
+    "pageAccessToken": "EAADo3s0bNisBACo4DQUQaB9IuAd8ZCdIOUBMBNYisCPKpuhj1fVflcZB7UZA5ZCLKwZCgkTi4k8UZCeSwybBGCiTuF8gW0MUywrn2QYeMZAB4wt8EIUhZCJtdA5ZBgFbOxXnoi9rkE3yNzdPQvMgjlG1T6ZCVpNtcPGnPM5cZCOUYZB44gZDZD",
+    "validationToken": "lemon",
+    "serverURL": "https://whispering-retreat-78831.herokuapp.com/"
 }
