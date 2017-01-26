@@ -26,6 +26,7 @@ app.use(express.static('public'));
 
 const mockJson = require("./mockJson.js")
 
+var userData;
 const
     postbackCTA = "CTA_GET_STARTED",
     postbackEventDetail = "PAYLOAD_EVENT_DETAIL";
@@ -364,7 +365,7 @@ function receivedPostback(event) {
   // button for Structured Messages.
   var payload = event.postback.payload;
 
-
+  getUserData(senderID)
   console.log("Received postback for user %d and page %d with payload '%s' " +
     "at %d", senderID, recipientID, payload, timeOfPostback);
 
@@ -384,6 +385,7 @@ function receivedPostback(event) {
   }
 
 }
+
 
 /*
  * Message Read Event
@@ -769,6 +771,23 @@ function sendAccountLinking(recipientId) {
   callSendAPI(messageData);
 }
 
+function callGetUserAPI(recipientId){
+    request({
+        uri: `https://graph.facebook.com/v2.6/${recipientId}`
+        qs: { access_token : PAGE_ACCESS_TOKEN,
+            fields: [first_name,last_name,profile_pic,locale,timezone,gender]
+         },
+        method: 'GET'
+    }, function(error, response, body){
+        if(!error && response.statusCode == 200){
+            userData = body;
+            sendTextMessage(recipientId,  userData)
+        }else {
+          console.error("Failed calling callGetUser API", response.statusCode, response.statusMessage, body.error);
+        }
+
+    })
+}
 /*
  * Call the Send API. The message data goes in the body. If successful, we'll
  * get the message id in a response
