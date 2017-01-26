@@ -367,10 +367,9 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
-  if(payload = postbackCTA){
+  if(payload == postbackCTA){
       sendTextMessage(senderID, `Welcome ! this is the first message`);
       sendGenericMessage(senderID, ctaSelectionArray)
-
   }
   sendTextMessage(senderID, `Postback called -- hoge ${payload}`);
 }
