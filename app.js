@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 app.use(express.static('public'));
 
-import ctaSelectionArray from "./mockJson.js"
+const ctaSelectionArray = require("./mockJson.js")
 
 const postbackCTA = "CTA_GET_STARTED"
 /*

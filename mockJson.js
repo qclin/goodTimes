@@ -1,4 +1,10 @@
-export var ctaSelectionArray = [{
+const config = require('config')
+const SERVER_URL = (process.env.SERVER_URL) ?
+  (process.env.SERVER_URL) :
+  config.get('serverURL');
+
+
+var ctaSelectionArray = [{
   title: "CTA - panel 1",
   subtitle: "Next-generation virtual reality",
   item_url: "https://www.oculus.com/en-us/rift/",
@@ -27,3 +33,6 @@ export var ctaSelectionArray = [{
     payload: "Payload for second bubble",
   }]
 }]
+
+
+module.export = ctaSelectionArray
