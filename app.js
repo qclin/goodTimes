@@ -24,8 +24,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 app.use(express.static('public'));
 
-const ctaSelectionArray = require("./mockJson.js")
-
+const mockJson = require("./mockJson.js")
+console.log(" --ctaSelectionArray-- ", mockJson.ctaSelectionArray )
 const postbackCTA = "CTA_GET_STARTED"
 /*
  * Be sure to setup your config values before running this code. You can
@@ -369,7 +369,7 @@ function receivedPostback(event) {
   // let them know it was successful
   if(payload == postbackCTA){
       sendTextMessage(senderID, `Welcome ! this is the first message`);
-      sendGenericMessage(senderID, ctaSelectionArray)
+      sendGenericMessage(senderID, mockJson.ctaSelectionArray)
   }
   sendTextMessage(senderID, `Postback called -- hoge ${payload}`);
 }

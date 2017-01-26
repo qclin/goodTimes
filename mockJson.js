@@ -4,7 +4,7 @@ const SERVER_URL = (process.env.SERVER_URL) ?
   config.get('serverURL');
 
 
-var ctaSelectionArray = [{
+module.exports.ctaSelectionArray = [{
   title: "CTA - panel 1",
   subtitle: "Next-generation virtual reality",
   item_url: "https://www.oculus.com/en-us/rift/",
@@ -33,6 +33,3 @@ var ctaSelectionArray = [{
     payload: "Payload for second bubble",
   }]
 }]
-
-
-module.export = ctaSelectionArray
