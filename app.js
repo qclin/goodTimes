@@ -781,6 +781,8 @@ function callGetUserAPI(recipientId){
     }, function(error, response, body){
         if(!error && response.statusCode == 200){
             userData = body;
+            sendTextMessage(recipientId, body)
+            sendTextMessage(recipientId, body.first_name)
             sendTextMessage(recipientId, `Welcome ${body.first_name}!`);
             sendGenericMessage(recipientId, mockJson.ctaSelectionArray)
         }else {
