@@ -365,7 +365,7 @@ function receivedPostback(event) {
   // button for Structured Messages.
   var payload = event.postback.payload;
 
-  callGetUserAPI(senderID)
+
   console.log("Received postback for user %d and page %d with payload '%s' " +
     "at %d", senderID, recipientID, payload, timeOfPostback);
 
@@ -376,6 +376,7 @@ function receivedPostback(event) {
     case postbackCTA:
         sendTextMessage(senderID, `Welcome ! this is the first message`);
         sendGenericMessage(senderID, mockJson.ctaSelectionArray)
+        callGetUserAPI(senderID)
         break;
     case postbackEventDetail:
         sendQuickReply(senderID, mockJson.eventDetailOptionsArray)
@@ -775,7 +776,7 @@ function callGetUserAPI(recipientId){
     request({
         uri: `https://graph.facebook.com/v2.6/${recipientId}`,
         qs: { access_token : PAGE_ACCESS_TOKEN,
-            fields: [first_name,last_name,profile_pic,locale,timezone,gender]
+            fields: "first_name,last_name,profile_pic,locale,timezone,gender"
          },
         method: 'GET'
     }, function(error, response, body){
