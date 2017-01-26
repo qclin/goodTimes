@@ -19,16 +19,24 @@ curl -X DELETE -H "Content-Type: application/json" -d '{
 }' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAADo3s0bNisBACo4DQUQaB9IuAd8ZCdIOUBMBNYisCPKpuhj1fVflcZB7UZA5ZCLKwZCgkTi4k8UZCeSwybBGCiTuF8gW0MUywrn2QYeMZAB4wt8EIUhZCJtdA5ZBgFbOxXnoi9rkE3yNzdPQvMgjlG1T6ZCVpNtcPGnPM5cZCOUYZB44gZDZD"
 
 
+/*  ------ call to action button   --------
+
 curl -X POST -H "Content-Type: application/json" -d '{
   "setting_type":"call_to_actions",
   "thread_state":"new_thread",
   "call_to_actions":[
     {
-      "payload":"USER_DEFINED_PAYLOAD"
+      "payload":"CTA_GET_STARTED"
     }
   ]
-}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAADo3s0bNisBACo4DQUQaB9IuAd8ZCdIOUBMBNYisCPKpuhj1fVflcZB7UZA5ZCLKwZCgkTi4k8UZCeSwybBGCiTuF8gW0MUywrn2QYeMZAB4wt8EIUhZCJtdA5ZBgFbOxXnoi9rkE3yNzdPQvMgjlG1T6ZCVpNtcPGnPM5cZCOUYZB44gZDZD"*/
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAADo3s0bNisBACo4DQUQaB9IuAd8ZCdIOUBMBNYisCPKpuhj1fVflcZB7UZA5ZCLKwZCgkTi4k8UZCeSwybBGCiTuF8gW0MUywrn2QYeMZAB4wt8EIUhZCJtdA5ZBgFbOxXnoi9rkE3yNzdPQvMgjlG1T6ZCVpNtcPGnPM5cZCOUYZB44gZDZD"
 
+curl -X DELETE -H "Content-Type: application/json" -d '{
+  "setting_type":"call_to_actions",
+  "thread_state":"new_thread"
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAADo3s0bNisBACo4DQUQaB9IuAd8ZCdIOUBMBNYisCPKpuhj1fVflcZB7UZA5ZCLKwZCgkTi4k8UZCeSwybBGCiTuF8gW0MUywrn2QYeMZAB4wt8EIUhZCJtdA5ZBgFbOxXnoi9rkE3yNzdPQvMgjlG1T6ZCVpNtcPGnPM5cZCOUYZB44gZDZD"
+
+*/
 
 
 /*curl -X POST -H "Content-Type: application/json" -d '{
@@ -38,12 +46,12 @@ curl -X POST -H "Content-Type: application/json" -d '{
     {
       "type":"postback",
       "title":"Help",
-      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_CAROUSEL"
     },
     {
       "type":"postback",
       "title":"Start a New Order",
-      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
+      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_BUTTON_QUICK_REPLY"
     },
     {
       "type":"web_url",
