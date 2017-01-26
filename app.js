@@ -773,7 +773,7 @@ function sendAccountLinking(recipientId) {
 
 function callGetUserAPI(recipientId){
     request({
-        uri: `https://graph.facebook.com/v2.6/${recipientId}`
+        uri: `https://graph.facebook.com/v2.6/${recipientId}`,
         qs: { access_token : PAGE_ACCESS_TOKEN,
             fields: [first_name,last_name,profile_pic,locale,timezone,gender]
          },
