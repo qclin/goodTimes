@@ -25,8 +25,11 @@ app.use(bodyParser.json({ verify: verifyRequestSignature }));
 app.use(express.static('public'));
 
 const mockJson = require("./mockJson.js")
-console.log(" --ctaSelectionArray-- ", mockJson.ctaSelectionArray )
-const postbackCTA = "CTA_GET_STARTED"
+
+const
+    postbackCTA = "CTA_GET_STARTED",
+    postbackEventDetail = "PAYLOAD_EVENT_DETAIL";
+
 /*
  * Be sure to setup your config values before running this code. You can
  * set them using environment variables or modifying the config file in /config.
@@ -367,11 +370,19 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
-  if(payload == postbackCTA){
-      sendTextMessage(senderID, `Welcome ! this is the first message`);
-      sendGenericMessage(senderID, mockJson.ctaSelectionArray)
+
+  switch (payload) {
+    case postbackCTA:
+        sendTextMessage(senderID, `Welcome ! this is the first message`);
+        sendGenericMessage(senderID, mockJson.ctaSelectionArray)
+        break;
+    case postbackEventDetail:
+        sendQuickReply(senderID, mockJson.eventDetailOptionsArray)
+        break;
+    default:
+      sendTextMessage(senderID, `Postback called -- hoge ${payload}`);
   }
-  sendTextMessage(senderID, `Postback called -- hoge ${payload}`);
+
 }
 
 /*
@@ -669,31 +680,12 @@ function sendReceiptMessage(recipientId) {
  * Send a message with Quick Reply buttons.
  *
  */
-function sendQuickReply(recipientId) {
+function sendQuickReply(recipientId, replyOptions) {
   var messageData = {
     recipient: {
       id: recipientId
     },
-    message: {
-      text: "What's your favorite movie genre?",
-      quick_replies: [
-        {
-          "content_type":"text",
-          "title":"Action",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ACTION"
-        },
-        {
-          "content_type":"text",
-          "title":"Comedy",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_COMEDY"
-        },
-        {
-          "content_type":"text",
-          "title":"Drama",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_DRAMA"
-        }
-      ]
-    }
+    message: replyOptions
   };
 
   callSendAPI(messageData);
