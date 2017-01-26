@@ -781,7 +781,7 @@ function callGetUserAPI(recipientId){
     }, function(error, response, body){
         if(!error && response.statusCode == 200){
             userData = body;
-            sendTextMessage(recipientId, `Welcome ${userData.first_name}!`);
+            sendTextMessage(recipientId, `Welcome ${body.first_name}!`);
             sendGenericMessage(recipientId, mockJson.ctaSelectionArray)
         }else {
           console.error("Failed calling callGetUser API", response.statusCode, response.statusMessage, body.error);
