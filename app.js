@@ -374,8 +374,7 @@ function receivedPostback(event) {
 
   switch (payload) {
     case postbackCTA:
-        sendTextMessage(senderID, `Welcome ! this is the first message`);
-        sendGenericMessage(senderID, mockJson.ctaSelectionArray)
+
         callGetUserAPI(senderID)
         break;
     case postbackEventDetail:
@@ -782,7 +781,8 @@ function callGetUserAPI(recipientId){
     }, function(error, response, body){
         if(!error && response.statusCode == 200){
             userData = body;
-            sendTextMessage(recipientId,  userData)
+            sendTextMessage(recipientId, `Welcome ${userData.first_name}!`);
+            sendGenericMessage(recipientId, mockJson.ctaSelectionArray)
         }else {
           console.error("Failed calling callGetUser API", response.statusCode, response.statusMessage, body.error);
         }
